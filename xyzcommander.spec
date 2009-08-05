@@ -17,8 +17,8 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	rpmbuild(macros) >= 1.219
 #Requires:		python-libs
 Requires:	python-modules
-#BuildArch:	noarch
 Requires:	python-urwid
+#BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,6 +26,17 @@ XYZCommander - Console file manager. Beta version!
 
 %description -l hu.UTF-8
 XYZCommander - konzolos fájlkezelő. Béta verzió!
+
+%package doc-api
+Summary:	API documentation of XYZCommander
+Summary(hu.UTF-8):	Az XYZCommander API dokumentációja
+Group:		Documentation
+
+%description doc-api
+API documentation of XYZCommander.
+
+%description doc-api -l hu.UTF-8
+Az XYZCommander API dokumentációja.
 
 %prep
 %setup -q -n %{shortname}-%{version}-%{progrelease}
@@ -49,10 +60,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/%{shortname}
-%doc %{_docdir}/%{shortname}-%{version}-%{progrelease}
+%dir %{_docdir}/%{shortname}-%{version}-%{progrelease}
+%doc %{_docdir}/%{shortname}-%{version}-%{progrelease}/user-manual
 %{py_sitescriptdir}/libxyz
 %{py_sitescriptdir}/*.egg-info
 %dir %{_datadir}/xyzcmd
 %{_datadir}/xyzcmd/conf
 %{_datadir}/xyzcmd/plugins
 %{_datadir}/xyzcmd/skins
+
+%files doc-api
+%defattr(644,root,root,755)
+%doc %{_docdir}/%{shortname}-%{version}-%{progrelease}/api
