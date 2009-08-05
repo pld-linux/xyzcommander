@@ -4,7 +4,7 @@ Summary:	XYZCommander - Console file manager
 Summary(hu.UTF-8):	XYZCommander - konzolos fájlkezelő
 Name:		xyzcommander
 Version:	0.0.1
-Release:	0.1
+Release:	0.%{progrelease}.1
 License:	LGPL
 Group:		Applications/Shells
 Source0:	http://xyzcmd.googlecode.com/files/%{shortname}-%{version}-%{progrelease}.tar.bz2
@@ -18,6 +18,7 @@ BuildRequires:	rpmbuild(macros) >= 1.219
 #Requires:		python-libs
 Requires:	python-modules
 #BuildArch:	noarch
+Requires:	python-urwid
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
